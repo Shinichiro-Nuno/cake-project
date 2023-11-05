@@ -19,7 +19,8 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $query = $this->Users->find('lastMonth')->find('maruo');
+        $users = $this->paginate($query);
 
         $this->set(compact('users'));
     }
