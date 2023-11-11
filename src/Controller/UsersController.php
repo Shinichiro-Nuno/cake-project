@@ -12,6 +12,12 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout']);
+    }
+
     /**
      * Index method
      *
@@ -19,8 +25,9 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $query = $this->Users->find('lastMonth')->find('maruo');
-        $users = $this->paginate($query);
+        // $query = $this->Users->find('lastMonth')->find('maruo');
+        // $users = $this->paginate($query);
+        $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
     }
