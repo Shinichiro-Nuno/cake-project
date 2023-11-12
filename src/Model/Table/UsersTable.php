@@ -97,6 +97,10 @@ class UsersTable extends Table
             ->notEmptyString('email');
 
         $validator
+            ->scalar('tel')
+            ->allowEmpty('tel');
+
+        $validator
             ->scalar('created_user')
             ->maxLength('created_user', 45)
             ->allowEmptyString('created_user');
