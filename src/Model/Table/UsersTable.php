@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+// use Cake\Localized\Validation\JaValidation;
 
 /**
  * Users Model
@@ -70,6 +71,9 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        // $validator->setProvider('custom', 'App\Model\Validation\CustomValidation');
+        // $validator->setProvider('jp', JpValidation::class);
+
         $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
@@ -98,7 +102,21 @@ class UsersTable extends Table
 
         $validator
             ->scalar('tel')
-            ->allowEmpty('tel');
+            ->allowEmpty('tel')
+            // ->add('tel', 'tel', [
+            //     'rule' => function ($value) {
+            //         return (bool) preg_match('/^[0-9][0-9\-]+[0-9]$/', $value);
+            //     },
+            //     'message' => '電話番号が正しくありません'
+            // ->add('tel', 'tel', [
+            //     'rule' => 'checkTel',
+            //     'provider' => 'custom',
+            //     'message' => '電話番号が正しくありません'
+            ->add('tel', 'tel', [
+                'rule' => 'phone',
+                'provider' => 'jp',
+                'message' => '電話番号が正しくありません'
+            ]);
 
         $validator
             ->scalar('created_user')
@@ -126,5 +144,9 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['account']));
 
         return $rules;
+    }
+
+    public function checkTel($value) {
+        return (bool) preg_match('/^[0-9][0-9\-]+[0-9]$/', $value);
     }
 }
