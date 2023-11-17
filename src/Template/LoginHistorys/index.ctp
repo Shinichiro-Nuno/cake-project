@@ -13,7 +13,10 @@
     </ul>
 </nav>
 <div class="loginHistorys index large-9 medium-8 columns content">
-    <h3><?= __('Login Historys') ?></h3>
+    <h3 class="large-10 medium-10 columns"><?= __('Login Historys') ?></h3>
+    <span class="large-2 medium-2 columns" style="border:thick double #258D97;text-align:center">
+        <?= $this->Html->link(__('Download'), ['action' => 'download']) ?>
+    </span>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
