@@ -12,6 +12,7 @@ Cake\I18n\I18n::setLocale('ja_JP');
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Login Historys'), ['controller' => 'LoginHistorys', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Login History'), ['controller' => 'LoginHistorys', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('upload Users'), ['action' => 'upload']) ?></li>
     </ul>
 </nav>
 <div class="users index large-9 medium-8 columns content">
