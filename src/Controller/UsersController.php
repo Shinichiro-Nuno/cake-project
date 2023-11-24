@@ -30,8 +30,10 @@ class UsersController extends AppController
         // $query = $this->Users->find('lastMonth')->find('maruo');
         // $users = $this->paginate($query);
         $users = $this->paginate($this->Users);
-
         $this->set(compact('users'));
+        // $this->log('これはログファイルに出力されるメッセージです。','debug');
+        // \Cake\Log\Log::debug('Logクラスのdebugメソッドを使用して出力します');
+        \Cake\Log\Log::info('Logクラスのinfoメソッドを使用して出力します');
     }
 
     /**
