@@ -33,7 +33,7 @@ class UsersController extends AppController
         $this->set(compact('users'));
         // $this->log('これはログファイルに出力されるメッセージです。','debug');
         // \Cake\Log\Log::debug('Logクラスのdebugメソッドを使用して出力します');
-        \Cake\Log\Log::info('Logクラスのinfoメソッドを使用して出力します');
+        // \Cake\Log\Log::info('Logクラスのinfoメソッドを使用して出力します');
     }
 
     /**
@@ -48,6 +48,9 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => ['LoginHistorys'],
         ]);
+
+        // \Cake\Error\Debugger::log($user);
+        // \Cake\Log\Log::debug($user);
 
         $this->set('user', $user);
     }

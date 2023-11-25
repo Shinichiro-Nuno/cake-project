@@ -16,6 +16,8 @@
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
+<?php //debug($user); ?>
+<?php //$this->log($user, 'debug'); ?>
     <h3><?= h($user->name) ?></h3>
     <table class="vertical-table">
         <tr>
